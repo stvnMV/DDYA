@@ -1,1 +1,101 @@
+def signo(n):
+    if n > 0:
+        return "Positivo"
+    elif n < 0:
+        return "Negativo"
+    else:
+        return "Cero"
 
+def paridad(n):
+    if n % 2 == 0:
+        return "Par"
+    else:
+        return "Impar"
+
+def fibo(n):
+   print ("a")#intente hacerlo mediante recurcion pero no funcinoo y no se me ocurrio otro metodo de hacerlo
+
+def primo(n):
+    for c in range (1, n):
+        if n % c+1==0 :
+            print(c,n)
+            return "No es primo"
+        else:
+            return "Es primo"
+    
+def suma_int(num1, num2):
+    if num1!= (num2+1) and num2!= (num1+1) and num1!=num2:
+        if num2 < num1:
+            num1, num2 = num2, num1
+        for c in range(num1+1, num2):
+            suma = 0
+            suma += c
+        return suma
+    else:
+        return "No hay números intermedios para sumar"
+
+def poten(n):
+    if n % 2 == 0:
+        return n*3  
+    else:
+        return n*2  
+
+def voc_cons(mes):
+    voc=[]
+    cons=[]
+    for c in range (len(mes)):
+        if mes[c]=="a" or mes[c]=="e" or mes[c]=="i" or mes[c]=="o" or mes[c]=="u":
+            voc.append(mes[c])
+        else:
+            cons.append(mes[c])
+    print("Vocales:", voc)
+    print("Consonantes:", cons)
+
+def abece(mes):
+    print("a")#no se como poner cada letra con su posicion en el abecedario
+
+def main():
+    ctrl=2
+    print("     MENÚ PRINCIPAL")
+    print("__________________________")
+    print("1. Ingresar",ctrl," números")
+    print("2. Ingresar fecha y código")
+    
+    opc = input("Elige una opción (1 o 2): ")
+    
+    if opc == "1":
+        n=[0 for c in range(ctrl)]
+        print("\n--- Opción 1: Dos números ---")
+        for c in range (ctrl):
+            n[c] = int(input("Ingrese el número: "))
+            print("\n--- Resultados para el número:",n[c])
+            print("1. Signo:", signo(n[c]))
+            print("2. Paridad:", paridad(n[c]))
+            print("3. Es Fibonacci:", fibo(n[c]))
+            print("4. Es Primo:", primo(n[c]))
+            print("5. Potencia:", poten(n[c]))
+        suma= suma_int(n[0], n[1])
+        print("\n6. La suma de los números intermedios entre",n[0],"y",n[1],"es:",suma)
+        
+    elif opc == "2":
+        print("\n--- Opción 2: Fecha y Código ---")
+        dat = input("Ingresa fecha y hora separada de esta manera:(Ejemplo: 1-enero-2000-100032300): ")
+        
+        partes = dat.split("-")
+        
+        if len(partes) == 4:
+            mes = partes[1]
+            codigo = partes[0]+partes[2]+partes[3]
+            print("\n--- Resultados para el número:", codigo)
+            print("1. Signo:", signo(int(codigo)))
+            print("2. Paridad:", paridad(int(codigo)))
+            print("3. Es Fibonacci:", fibo(int(codigo)))
+            print("4. Es Primo:", primo(int(codigo)))
+            print("5. Potencia:", poten(int(codigo)))
+            print("\n Vocales y consonantes del mes:", mes)
+            voc_cons(mes)
+            abece(mes)
+    else:
+        print("Opción no válida. Fin del programa.")
+
+main()
